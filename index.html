@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>O Theo e as Apostas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- barra com a banca e a rodada -->
+  <div id="hud" hidden><span>Banca do Theo: <b id="banca"></b></span><span>Rodada: <b id="rodada"></b></span></div>
+
+  <main>
+    <!-- 1. abertura -->
+    <section class="tela" id="t-intro">
+      <!-- cenário: salve como assets/cenario-rua.png | Theo: assets/theo.png (sem a imagem, aparece o placeholder) -->
+      <div class="cena">
+        <div class="fundo"><span>CENÁRIO: assets/cenario-rua.png</span><img src="assets/cenario-rua.png" alt="" onerror="this.remove()"></div>
+        <div class="theo entra" id="theo-cena"><span>FOTO DO THEO</span><img src="assets/theo.png" alt="Theo" onerror="this.remove()"></div>
+      </div>
+      <!-- caixa de diálogo (clique para continuar) -->
+      <div class="dialogo" id="dialogo"><b id="d-nome"></b><p id="d-texto"></p><i id="d-seta">▶ clique para continuar</i></div>
+      <button class="btn" id="b-comecar" hidden>APOSTAR</button>
+    </section>
+
+    <!-- 3. aposta -->
+    <section class="tela" id="t-aposta" hidden>
+      <div id="frase" class="fala" hidden></div>
+      <div id="confronto"></div>
+      <label for="valor" id="lbl"></label>
+      <input id="valor" type="number" inputmode="numeric" min="5">
+      <p id="dica" class="dica"></p>
+      <p id="msg" class="erro" role="alert"></p>
+      <button class="btn" id="b-apostar">APOSTAR</button>
+    </section>
+
+    <!-- 4. partida -->
+    <section class="tela" id="t-jogo" hidden>
+      <div id="placar"></div>
+      <p id="minuto">0'</p>
+      <div id="reacao" class="fala" hidden></div>
+      <ul id="log"></ul>
+      <button class="btn" id="b-resultado" hidden>VER RESULTADO</button>
+    </section>
+
+    <!-- 5. resultado da rodada -->
+    <section class="tela" id="t-res" hidden>
+      <p class="perdeu" id="res-titulo"></p>
+      <ul id="res-info"></ul>
+      <div id="res-theo" class="fala" hidden></div>
+      <button class="btn" id="b-prox"></button>
+    </section>
+
+    <!-- 6. all in -->
+    <section class="tela" id="t-allin" hidden>
+      <p class="alerta">ÚLTIMA CHANCE</p>
+      <div id="f-allin" class="fala" hidden></div>
+      <p class="big">THEO VAI DE <b class="vermelho">ALL IN</b></p>
+      <p class="big">Se ganhar, recupera tudo.</p>
+      <p class="big late">Se perder...</p>
+      <button class="btn vermelho late2" id="b-allin">ACEITAR O ALL IN</button>
+    </section>
+
+    <!-- 7. game over -->
+    <section class="tela" id="t-fim" hidden>
+      <p class="go">GAME OVER</p>
+      <p class="big">APOSTAR NÃO COMPENSA.</p>
+      <p class="big vermelho">THEO PERDEU TUDO.</p>
+      <p class="banca-fim">Banca: <b>R$ 0</b></p>
+      <p class="big late">Agora o Theo vai ter que vender o carro.</p>
+      <p class="dica">(Ou bater tambor VOTE CICO BOBIM!!!!!)</p>
+      <button class="btn late2" id="b-reiniciar">JOGAR NOVAMENTE</button>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
